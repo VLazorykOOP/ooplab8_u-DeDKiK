@@ -41,7 +41,49 @@ int main() {
 
     return 0;
 }
+//     завдання 2
     
+template <typename T>
+void shellSort(T arr[], int size) {
+    int gap = size / 2;
+
+    while (gap > 0) {
+        for (int i = gap; i < size; i++) {
+            T temp = arr[i];
+            int j = i;
+
+            while (j >= gap && strcmp(arr[j - gap], temp) > 0) {
+                arr[j] = arr[j - gap];
+                j -= gap;
+            }
+
+            arr[j] = temp;
+        }
+
+        gap /= 2;
+    }
+}
+
+int main() {
+    const int size = 5;
+    const char* arr[size] = { "banana", "grape", "apple", "orange", "kiwi" };
+
+    cout << "Before sorting:" << endl;
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    shellSort(arr, size);
+
+    cout << "After sorting:" << endl;
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
     
 }
 
